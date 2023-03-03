@@ -1,0 +1,59 @@
+﻿@model DemoWeb.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<div style="margin: 10px auto; width: 70%;">
+    <h2 style="text-align:center">CHI TIẾT SẢN PHẨM</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên sản phẩm
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NamePro)
+            </dd>
+
+            <dt>
+               Mô tả
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DecriptionPro)
+            </dd>
+
+            <dt>
+               Giá
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                Hình minh họa
+            </dt>
+
+            <dd>
+               <img src="~/images/@Model.ImagePro" />
+            </dd>
+
+            <dt>
+                Nhóm sản phẩm
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category1.NameCate)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-success" }) |
+        @Html.ActionLink("Quay lại", "Index",null,new { @class = "btn btn-primary"})
+    </p>
+</div>

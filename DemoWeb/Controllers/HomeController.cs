@@ -36,5 +36,15 @@ namespace DemoWeb.Controllers
         {
             return View();
         }
+
+        public ActionResult DesktopComputer()
+        {
+            return View();
+        }
+
+        public ActionResult ThongTin()
+        {
+            return View();
+        }
     }
 }

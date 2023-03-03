@@ -1,0 +1,65 @@
+﻿@model DemoWeb.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div style="margin: 10px auto; width: 70%;">
+    <h3 style="text-align:center">BẠN CHẮC CHẮN CÓ MUỐN XÓA PRODUCT NÀY?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+               Tên sản phẩm
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NamePro)
+            </dd>
+
+            <dt>
+               Mô tả sản phẩm
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DecriptionPro)
+            </dd>
+
+            <dt>
+                Giá
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                Hình minh họa
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ImagePro)
+            </dd>
+
+            <dt>
+                Danh mục sản phẩm
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category1.NameCate)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa" class="btn btn-danger" /> |
+                @Html.ActionLink("Quay lại", "Index",null,new { @class="btn btn-primary"})
+            </div>
+        }
+    </div>
+</div>
