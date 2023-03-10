@@ -95,12 +95,29 @@ namespace DemoWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,NamePro,DecriptionPro,Category,Price,ImagePro")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,NamePro,DecriptionPro,Category,Price,ImagePro")] Product product,HttpPostedFileBase ImagePro)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
+                var productDB = db.Products.FirstOrDefault(p => p.ProductID == product.ProductID);
+                if(productDB != null)
+                {
+                    productDB.NamePro = product.NamePro;
+                    productDB.DecriptionPro = product.DecriptionPro;
+                    productDB.Price = product.Price;
+                    if (ImagePro != null)
+                    {
+                        //Lấy tên file của hình được up lên
+                        var fileName = Path.GetFileName(ImagePro.FileName);
+                        //Tạo đường dẫn tới file
+                        var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                        //Lưu tên
+                        productDB.ImagePro = fileName;
+                        //Save vào Images Folder
+                        ImagePro.SaveAs(path);
+                    }
+                    productDB.Category = product.Category;
+                }
                 return RedirectToAction("Index");
             }
             ViewBag.Category = new SelectList(db.Categories, "IDCate", "NameCate", product.Category);

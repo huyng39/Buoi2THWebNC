@@ -6,7 +6,7 @@
 }
 
 <div style="margin: 10px auto; width: 70%;">
-    <h2 style="text-align:center">CHỈNH SỬA CATEGORY</h2>
+    <h2 style="text-align:center">CHỈNH SỬA PRODUCTS</h2>
 
     @using (Html.BeginForm())
     {
@@ -52,7 +52,9 @@
             <div class="form-group">
                 Hình minh họa
                 <div class="col-md-10">
-                    <input type="file" name="ImagePro" />
+                    <input type="file" name="ImagePro" style="padding-bottom: 20px;" />
+                    @*Ảnh hiện tại*@
+                    <img src="~/images/@Model.ImagePro"/>
                     @Html.ValidationMessageFor(model => model.ImagePro, "", new { @class = "text-danger" })
                 </div>
             </div>

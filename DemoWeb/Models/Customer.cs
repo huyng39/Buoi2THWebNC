@@ -24,6 +24,7 @@ namespace DemoWeb.Models
         public string NameCus { get; set; }
         public string PhoneCus { get; set; }
         public string EmailCus { get; set; }
+        public string PassCus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderPro> OrderProes { get; set; }

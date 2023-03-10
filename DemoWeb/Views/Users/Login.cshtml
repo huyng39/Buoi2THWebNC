@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/header_content.css" />
+<div style="margin: 10px auto; width: 35%;">
+    <h2 class="centertitle">ĐĂNG NHẬP</h2>
+    <h5 style="color:red;text-align:center;">@ViewBag.ThongBao</h5>
+    @using (Html.BeginForm("Login", "Users"))
+    {
+        @Html.ValidationSummary(true)
+        <div class="mb-3 mt-3">
+            <label for="name" class="form-label">Tên:</label>
+            <input type="text" class="form-control" id="name" name="NameCus" required>
+        </div>
+        <div class="mb-3">
+            <label for="pwd" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="pwd" name="PassCus" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+    }
+
+</div>
